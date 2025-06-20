@@ -11,13 +11,19 @@ You will also need the following functions: -/
 #check mul_assoc
 
 example (a b c : ℝ) : a * b * c = b * (a * c) := by
-  sorry
+  rw [mul_comm a b]
+  rw [mul_assoc]
 
 example (a b c : ℝ) : c * b * a = b * (a * c) := by
-  sorry
+  rw [mul_comm c b]
+  rw [mul_assoc]
+  rw [mul_comm c a]
+
 
 example (a b c : ℝ) : a * (b * c) = b * (a * c) := by
-  sorry
+  rw [← mul_assoc a b c]
+  rw [mul_comm a b]
+  rw [mul_assoc]
 
 example (a b c : ℝ) : a * b * c = b * c * a := by
   sorry
@@ -58,10 +64,21 @@ For the following exercises, use the tactics:
 -/
 
 example (P Q R S : Prop) (h : P → R) (h' : Q → S) : P ∧ Q → R ∧ S := by
-  sorry
+  intro pq
+  --rcases pq with ⟨p,q⟩
+  obtain ⟨p,q⟩ := pq
+  constructor
+  · apply h
+    exact p
+  · apply h'
+    exact q
 
 example (α : Type) (P Q : α → Prop) : (∃ x, P x ∧ Q x) → ∃ x, Q x ∧ P x := by
-  sorry
+  intro s
+  obtain ⟨f, n⟩ := s
+  obtain ⟨ p, q⟩ := n
+  use f
+
 
 -- For the next exercise you also need the function
 #check le_trans

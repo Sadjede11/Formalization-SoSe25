@@ -10,7 +10,26 @@ For this exercise recall the following properties of `Finset`:
 #check mem_inter
 #check mem_union
 example (X : Type*) [DecidableEq X] (A B C : Finset X): A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C) := by
-  sorry
+  ext x
+  constructor
+  · intro d
+    rw [mem_union]
+    rw [mem_inter]
+    rw [mem_inter]
+    rw [mem_inter] at d
+    rw [mem_union] at d
+    obtain ⟨dP, dQ⟩ := d
+    rcases dQ with Q | P
+    · left
+      constructor
+      · exact dP
+      · exact Q
+    · right
+      constructor
+      · exact dP
+      · exact P
+
+  ·
 
 /-
 This next one should be very straightforward, so don't overthink it!

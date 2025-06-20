@@ -38,7 +38,7 @@ The trick is to have *2* separate monoids.
 #print Monoid
 #print AddMonoid
 -- We can define `Ring` as an extension of `Monoid` and `AddMonoid`.
-#check Ring
+#print Ring
 
 /-
 Of course this would mean many results have to be proven twice:
@@ -267,7 +267,7 @@ instance (M N : Type*) [Monoid M] [Monoid N] : MonoidHomClass₂ (MonoidHom₁ M
   map_one := fun f ↦ f.map_one
   map_mul := fun f ↦ f.map_mul
 
--- But also ring homorophisms.
+-- But also ring homomorphisms.
 instance (R S : Type*) [Ring R] [Ring S] : MonoidHomClass₂ (RingHom₁ R S) R S where
   toFun := fun f ↦ f.toMonoidHom₁.toFun
   map_one := fun f ↦ f.toMonoidHom₁.map_one

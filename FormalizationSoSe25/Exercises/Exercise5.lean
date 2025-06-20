@@ -12,6 +12,14 @@ Use `structure` to construct a new constructor:
 * It should satisfy `extensionality`
 -/
 
+@[ext]
+structure new_triple where
+   x : ℤ
+   y : ℤ
+   z : ℤ
+
+
+
 /-
 Now, solve the following exercises about `new_triple`:
 
@@ -22,11 +30,30 @@ Now, solve the following exercises about `new_triple`:
    using the numbers `x = 1`, `y = 2`, `z = -3`.
 -/
 
+example : new_triple := new_triple.mk 1 2 (-3)
+
+example : new_triple where
+  x := 1
+  y := 2
+  z := -3
+
+
+
 /-
 2. Uncomment the following line and prove it.
 -/
 
--- example (x₁ y₁ z₁ x₂ y₂ z₂ : ℤ) : (x₁ = x₂) ∧ (y₁ = y₂) ∧ (z₁ = z₂) ↔ (⟨x₁, y₁, z₁⟩ : new_triple )= (⟨x₂, y₂, z₂⟩ : new_triple) := by
+example (x₁ y₁ z₁ x₂ y₂ z₂ : ℤ) : (x₁ = x₂) ∧ (y₁ = y₂) ∧ (z₁ = z₂) ↔ (⟨x₁, y₁, z₁⟩ : new_triple )= (⟨x₂, y₂, z₂⟩ : new_triple) := by
+constructor
+· rintro  ⟨eqx, eqy, eqz⟩
+  ext
+  · exact eqx
+  · exact eqy
+  · exact eqz
+· intro h
+  cases h
+
+
 
 
 /-
