@@ -309,7 +309,7 @@ Finally, we can compute the inverse of a matrix.
 However the approach here will not be very efficient.
 -/
 #check inv_def
-#norm_num [inv_def] !![(1 : ℝ), 2; 3, 4]⁻¹
+#norm_num [inv_def] !![(1 : ℤ), 2; 3, 4]⁻¹
 
 /-
 Here we need to assume the elements of the matrix are in a field.
