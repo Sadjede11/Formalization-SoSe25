@@ -3,6 +3,7 @@
 import Mathlib.Tactic
 -- Theoretically, you could just write `import Mathlib`, but this will be somewhat slower.
 section continuity
+theorem Stetigkeit : ε-δ-Definition der Stetigkeit := by
   -- Sei ε > 0 beliebig.
   intro ε ε_pos,
   -- Da f stetig in l ist, gibt es δ > 0, so dass |x - l| < δ ⇒ |f x - f l| < ε.
